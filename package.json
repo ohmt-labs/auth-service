@@ -1,0 +1,53 @@
+{
+  "name": "marketwars-auth-service",
+  "version": "1.0.0",
+  "description": "MarketWars Authentication Service - JWT authentication with Google OAuth and Redis token storage",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts,js,json --exec node -r ts-node/register -r dotenv/config src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:build": "docker build -t marketwars-auth-service .",
+    "docker:build:prod": "docker build --target production -t marketwars-auth-service:prod .",
+    "docker:run": "docker run -p 3000:3000 --env-file .env marketwars-auth-service",
+    "docker:run:prod": "docker run -p 3000:3000 --env-file .env marketwars-auth-service:prod",
+    "docker:up": "docker-compose up --build",
+    "docker:up:prod": "docker-compose --profile production up --build",
+    "docker:down": "docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohmt-labs/auth-service.git"
+  },
+  "keywords": [
+    "auth"
+  ],
+  "author": "ohmt-labs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ohmt-labs/auth-service/issues"
+  },
+  "homepage": "https://github.com/ohmt-labs/auth-service#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "redis": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.3.0",
+    "@types/passport": "^1.0.17",
+    "@types/passport-google-oauth20": "^2.0.16",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
